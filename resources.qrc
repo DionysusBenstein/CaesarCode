@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/icon">
+        <file>caesar1.ico</file>
+        <file>icon.rc</file>
+    </qresource>
+</RCC>
