@@ -1,2 +1,2 @@
 # CaesarCode
-The program encrypts the text with the algorithm of Caesar.
+The program encrypts the text with the algorithm of Caesar

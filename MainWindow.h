@@ -24,6 +24,8 @@ private slots:
 
     void on_copy_clicked();
 
+    void on_keyValue_valueChanged(int arg1);
+
 private:
     Ui::MainWindow *ui;
 };
