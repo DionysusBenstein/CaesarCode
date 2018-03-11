@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Caesar Cipher v1.1</string>
+   <string>Caesar Cipher v1.2</string>
   </property>
   <property name="windowIcon">
    <iconset resource="resources.qrc">
@@ -31,16 +31,6 @@
       <item>
        <widget class="QLineEdit" name="input"/>
       </item>
-      <item>
-       <widget class="QPushButton" name="apply">
-        <property name="styleSheet">
-         <string notr="true">qradialgradient (spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(0, 0, 0, 0), stop:0.52 rgba(0, 0, 0, 0), stop:0.565 rgba(82, 121, 76, 33), stop:0.65 rgba(159, 235, 148, 64), stop:0.721925 rgba(255, 238, 150, 129), stop:0.77 rgba(255, 128, 128, 204), stop:0.89 rgba(191, 128, 255, 64), stop:1 rgba(0, 0, 0, 0))</string>
-        </property>
-        <property name="text">
-         <string>&amp;Зашифровать</string>
-        </property>
-       </widget>
-      </item>
      </layout>
     </item>
     <item row="1" column="0">
@@ -58,13 +48,6 @@
          <widget class="QLineEdit" name="output"/>
         </item>
        </layout>
-      </item>
-      <item>
-       <widget class="QPushButton" name="copy">
-        <property name="text">
-         <string>&amp;Скопировать</string>
-        </property>
-       </widget>
       </item>
      </layout>
     </item>
@@ -92,6 +75,13 @@
          </size>
         </property>
        </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="copy">
+        <property name="text">
+         <string>&amp;Скопировать</string>
+        </property>
+       </widget>
       </item>
      </layout>
     </item>
@@ -124,13 +114,28 @@
      <height>20</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>Справка</string>
+    </property>
+    <addaction name="action_CaesarCode"/>
+   </widget>
+   <addaction name="menu"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
+  <action name="action_CaesarCode">
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/icon/caesar1.ico</normaloff>:/icon/caesar1.ico</iconset>
+   </property>
+   <property name="text">
+    <string>О программе CaesarCode</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <tabstops>
   <tabstop>input</tabstop>
-  <tabstop>apply</tabstop>
   <tabstop>keyValue</tabstop>
   <tabstop>output</tabstop>
   <tabstop>encrypt</tabstop>

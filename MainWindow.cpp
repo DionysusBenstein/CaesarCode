@@ -1,13 +1,10 @@
 #include "MainWindow.h"
 #include "ui_MainWindow.h"
-#include <QClipboard>
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
     ui->keyValue->setMaximum(32);
-    ui->apply->setText("&Зашифровать");
-    ui->apply->setDefault(true);
     ui->encrypt->setChecked(true);
     ui->output->setReadOnly(true);
 }
@@ -239,47 +236,153 @@ QString decrypt(QString str, int key)
     return output;
 }
 
-
-void MainWindow::on_apply_clicked()
+void MainWindow::on_copy_clicked()
 {
-    if (ui->encrypt->isChecked())
-    {
-        ui->output->setText(encrypt(ui->input->text(), ui->keyValue->value()));
-        ui->statusBar->showMessage("Текст успешно зашифрован");
-    }
-    else if (ui->decrypt->isChecked())
-    {
-        ui->output->setText(decrypt(ui->input->text(), ui->keyValue->value()));
-        ui->statusBar->showMessage("Текст успешно расшифрован");
-    }
+    clipboard = QApplication::clipboard();
+    clipboard->setText(ui->output->text());
+
+    ui->statusBar->showMessage("Скопировано в буфер обмена");
 }
 
 void MainWindow::on_encrypt_clicked()
 {
-    ui->apply->setText("&Зашифровать");
+    if (!(ui->input->text() == "" || ui->input->text() == " " || ui->input->text() == "\t"))
+    {
+        if (ui->keyValue->value() != 0)
+        {
+            ui->output->setText(encrypt(ui->input->text(), ui->keyValue->value()));
+            ui->statusBar->showMessage("Текст успешно зашифрован");
+        }
+        else
+        {
+            ui->output->setText(encrypt(ui->input->text(), ui->keyValue->value()));
+            ui->statusBar->showMessage("");
+        }
+    }
+    else
+    {
+        ui->output->setText(ui->input->text());
+        ui->statusBar->showMessage("");
+    }
 }
 
 void MainWindow::on_decrypt_clicked()
 {
-    ui->apply->setText("&Расшифровать");
-}
-
-void MainWindow::on_copy_clicked()
-{
-    QClipboard *clipboard = QApplication::clipboard();
-    clipboard->setText(ui->output->text());
+    if (!(ui->input->text() == "" || ui->input->text() == " " || ui->input->text() == "\t"))
+    {
+        if (ui->keyValue->value() != 0)
+        {
+            ui->output->setText(decrypt(ui->input->text(), ui->keyValue->value()));
+            ui->statusBar->showMessage("Текст успешно расшифрован");
+        }
+        else
+        {
+            ui->output->setText(decrypt(ui->input->text(), ui->keyValue->value()));
+            ui->statusBar->showMessage("");
+        }
+    }
+    else
+    {
+        ui->output->setText(ui->input->text());
+        ui->statusBar->showMessage("");
+    }
 }
 
 void MainWindow::on_keyValue_valueChanged(int arg1)
 {
     if (ui->encrypt->isChecked())
     {
-        ui->output->setText(encrypt(ui->input->text(), ui->keyValue->value()));
-        ui->statusBar->showMessage("Текст успешно зашифрован");
+        if (!(ui->input->text() == "" || ui->input->text() == " " || ui->input->text() == "\t"))
+        {
+            if (ui->keyValue->value() != 0)
+            {
+                ui->output->setText(encrypt(ui->input->text(), ui->keyValue->value()));
+                ui->statusBar->showMessage("Текст успешно зашифрован");
+            }
+            else
+            {
+                ui->output->setText(encrypt(ui->input->text(), ui->keyValue->value()));
+                ui->statusBar->showMessage("");
+            }
+        }
+        else
+        {
+            ui->output->setText(ui->input->text());
+            ui->statusBar->showMessage("");
+        }
     }
     else if (ui->decrypt->isChecked())
     {
-        ui->output->setText(decrypt(ui->input->text(), ui->keyValue->value()));
-        ui->statusBar->showMessage("Текст успешно расшифрован");
+        if (!(ui->input->text() == "" || ui->input->text() == " " || ui->input->text() == "\t"))
+        {
+            if (ui->keyValue->value() != 0)
+            {
+                ui->output->setText(decrypt(ui->input->text(), ui->keyValue->value()));
+                ui->statusBar->showMessage("Текст успешно расшифрован");
+            }
+            else
+            {
+                ui->output->setText(decrypt(ui->input->text(), ui->keyValue->value()));
+                ui->statusBar->showMessage("");
+            }
+        }
+        else
+        {
+            ui->output->setText(ui->input->text());
+            ui->statusBar->showMessage("");
+        }
     }
+}
+
+void MainWindow::on_input_textChanged(const QString &arg1)
+{
+    if (ui->encrypt->isChecked())
+    {
+        if (!(ui->input->text() == "" || ui->input->text() == " " || ui->input->text() == "\t"))
+        {
+            if (ui->keyValue->value() != 0)
+            {
+                ui->output->setText(encrypt(ui->input->text(), ui->keyValue->value()));
+                ui->statusBar->showMessage("Текст успешно зашифрован");
+            }
+            else
+            {
+                ui->output->setText(encrypt(ui->input->text(), ui->keyValue->value()));
+                ui->statusBar->showMessage("");
+            }
+        }
+        else
+        {
+            ui->output->setText(ui->input->text());
+            ui->statusBar->showMessage("");
+        }
+    }
+    else if (ui->decrypt->isChecked())
+    {
+        if (!(ui->input->text() == "" || ui->input->text() == " " || ui->input->text() == "\t"))
+        {
+            if (ui->keyValue->value() != 0)
+            {
+                ui->output->setText(decrypt(ui->input->text(), ui->keyValue->value()));
+                ui->statusBar->showMessage("Текст успешно расшифрован");
+            }
+            else
+            {
+                ui->output->setText(decrypt(ui->input->text(), ui->keyValue->value()));
+                ui->statusBar->showMessage("");
+            }
+        }
+        else
+        {
+            ui->output->setText(ui->input->text());
+            ui->statusBar->showMessage("");
+        }
+    }
+}
+
+void MainWindow::on_action_CaesarCode_triggered()
+{
+    aboutWnd = new About;
+    aboutWnd->setModal(true);
+    aboutWnd->exec();
 }
