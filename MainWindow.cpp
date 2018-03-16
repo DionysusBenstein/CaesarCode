@@ -241,12 +241,19 @@ void MainWindow::on_copy_clicked()
     clipboard = QApplication::clipboard();
     clipboard->setText(ui->output->text());
 
-    ui->statusBar->showMessage("Скопировано в буфер обмена");
+    if (ui->input->text().isEmpty())
+    {
+        ui->statusBar->showMessage("");
+    }
+    else
+    {
+        ui->statusBar->showMessage("Скопировано в буфер обмена");
+    }
 }
 
 void MainWindow::on_encrypt_clicked()
 {
-    if (!(ui->input->text() == "" || ui->input->text() == " " || ui->input->text() == "\t"))
+    if (!(ui->input->text().isEmpty() || ui->input->text() == " " || ui->input->text() == "\t"))
     {
         if (ui->keyValue->value() != 0)
         {
@@ -268,7 +275,7 @@ void MainWindow::on_encrypt_clicked()
 
 void MainWindow::on_decrypt_clicked()
 {
-    if (!(ui->input->text() == "" || ui->input->text() == " " || ui->input->text() == "\t"))
+    if (!(ui->input->text().isEmpty() || ui->input->text() == " " || ui->input->text() == "\t"))
     {
         if (ui->keyValue->value() != 0)
         {
@@ -292,7 +299,7 @@ void MainWindow::on_keyValue_valueChanged(int arg1)
 {
     if (ui->encrypt->isChecked())
     {
-        if (!(ui->input->text() == "" || ui->input->text() == " " || ui->input->text() == "\t"))
+        if (!(ui->input->text().isEmpty() || ui->input->text() == " " || ui->input->text() == "\t"))
         {
             if (ui->keyValue->value() != 0)
             {
@@ -313,7 +320,7 @@ void MainWindow::on_keyValue_valueChanged(int arg1)
     }
     else if (ui->decrypt->isChecked())
     {
-        if (!(ui->input->text() == "" || ui->input->text() == " " || ui->input->text() == "\t"))
+        if (!(ui->input->text().isEmpty() || ui->input->text() == " " || ui->input->text() == "\t"))
         {
             if (ui->keyValue->value() != 0)
             {
@@ -338,7 +345,7 @@ void MainWindow::on_input_textChanged(const QString &arg1)
 {
     if (ui->encrypt->isChecked())
     {
-        if (!(ui->input->text() == "" || ui->input->text() == " " || ui->input->text() == "\t"))
+        if (!(ui->input->text().isEmpty() || ui->input->text() == " " || ui->input->text() == "\t"))
         {
             if (ui->keyValue->value() != 0)
             {
@@ -359,7 +366,7 @@ void MainWindow::on_input_textChanged(const QString &arg1)
     }
     else if (ui->decrypt->isChecked())
     {
-        if (!(ui->input->text() == "" || ui->input->text() == " " || ui->input->text() == "\t"))
+        if (!(ui->input->text().isEmpty() || ui->input->text() == " " || ui->input->text() == "\t"))
         {
             if (ui->keyValue->value() != 0)
             {
