@@ -265,8 +265,8 @@ QString decrypt(QString str, int key)
 //Слот обработки клика по кнопке "Скопировать"
 void MainWindow::on_copy_clicked()
 {
-    clipboard = QApplication::clipboard();
-    clipboard->setText(ui->output->text());
+    clipboard = QApplication::clipboard(); //Выделение памяти под буфер обмена
+    clipboard->setText(ui->output->text()); //Установка текста из поля output в буфер обмена
 
     //Если поле input пустое, то сообщение о копировании в StatusBar не выводится
     if (ui->input->text().isEmpty())
