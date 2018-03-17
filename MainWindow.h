@@ -18,22 +18,28 @@ public:
     ~MainWindow();
 
 private slots:
+    //Слот обработки клика по кнопке "Скопировать"
     void on_copy_clicked();
 
+    //Слот обработки клика по RadioButton "Зашифровать"
     void on_encrypt_clicked();
 
+    //Слот обработки клика по RadioButton "Расшифровать"
     void on_decrypt_clicked();
 
+    //Слот обработки изменения значения в SpinBox
     void on_keyValue_valueChanged(int arg1);
 
+    //Слот обработки изменения текста в поле input
     void on_input_textChanged(const QString &arg1);
 
+    //Слот обработки изменения состояния пункта "О программе" в меню "Справка
     void on_action_CaesarCode_triggered();
 
 private:
     Ui::MainWindow *ui;
-    QClipboard *clipboard;
-    About *aboutWnd;
+    QClipboard *clipboard; //Объявление переменной управления буфером обмена
+    About *aboutWnd; //Объявления окна "О программе"
 };
 
 #endif // MAINWINDOW_H

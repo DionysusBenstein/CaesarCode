@@ -4,6 +4,8 @@
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    //Установка значений по умолчанию
     ui->keyValue->setMaximum(32);
     ui->encrypt->setChecked(true);
     ui->output->setReadOnly(true);
@@ -14,8 +16,10 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+//Метод шифрования текста
 QString encrypt(QString str, int key)
 {
+    //Инициализация строк с алфавитом, знаками и цифрами
     QString high_en_alph = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     QString low_en_alph = "abcdefghijklmnopqrstuvwxyz";
     QString high_ru_alph = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ";
@@ -25,28 +29,34 @@ QString encrypt(QString str, int key)
 
     QString output;
 
+    //Посимвольное прохождение по введённой строке
     for (int i = 0; i < str.length(); ++i)
     {
+        //Если в введённой строке встречается пробел, то он остаётся неизменённым
         if(str[i] == ' ')
         {
             output += ' ';
         }
 
+        //Посимвольное прохождение по английскому алфавиту в верхнем регистре
         for (int j = 0; j < high_en_alph.length(); ++j)
         {
-            if (high_en_alph[j] == str[i])
+            if (high_en_alph[j] == str[i]) //Нахождение совпадений в алфавите
             {
-                if ((j + key) > 25)
+                if ((j + key) > 25) //Проверка на выход за границы массива
                 {
+                    //Сдвиг индекса в начало алфавита
                     output += high_en_alph[(j - 26) + key];
                 }
                 else
                 {
+                    //Сдвиг j-элемента на key позиций вправо
                     output += high_en_alph[j + key];
                 }
             }
         }
 
+        //Посимвольное прохождение по английскому алфавиту в нижнем регистре
         for (int j = 0; j < low_en_alph.length(); ++j)
         {
             if (low_en_alph[j] == str[i])
@@ -62,6 +72,7 @@ QString encrypt(QString str, int key)
             }
         }
 
+        //Посимвольное прохождение по русскому алфавиту в верхнем регистре
         for (int j = 0; j < high_ru_alph.length(); ++j)
         {
             if (high_ru_alph[j] == str[i])
@@ -77,6 +88,7 @@ QString encrypt(QString str, int key)
             }
         }
 
+        //Посимвольное прохождение по русскому алфавиту в нижнем регистре
         for (int j = 0; j < low_ru_alph.length(); ++j)
         {
             if (low_ru_alph[j] == str[i])
@@ -92,6 +104,7 @@ QString encrypt(QString str, int key)
             }
         }
 
+        //Посимвольное прохождение по строчке со знаками
         for (int j = 0; j < signs.length(); ++j)
         {
             if (signs[j] == str[i])
@@ -107,6 +120,7 @@ QString encrypt(QString str, int key)
             }
         }
 
+        //Посимвольное прохождение по строчке с цифрами
         for (int j = 0; j < numbers.length(); ++j)
         {
             if (numbers[j] == str[i])
@@ -125,8 +139,10 @@ QString encrypt(QString str, int key)
     return output;
 }
 
+//Метод дешифрования текста
 QString decrypt(QString str, int key)
 {
+    //Инициализация строк с алфавитом, знаками и цифрами
     QString high_en_alph = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     QString low_en_alph = "abcdefghijklmnopqrstuvwxyz";
     QString high_ru_alph = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ";
@@ -136,28 +152,34 @@ QString decrypt(QString str, int key)
 
     QString output;
 
+    //Посимвольное прохождение по введённой строке
     for (int i = 0; i < str.length(); ++i)
     {
+        //Если в введённой строке встречается пробел, то он остаётся неизменённым
         if(str[i] == ' ')
         {
             output += ' ';
         }
 
+        //Посимвольное прохождение по английскому алфавиту в верхнем регистре
         for (int j = 0; j < high_en_alph.length(); ++j)
         {
-            if (high_en_alph[j] == str[i])
+            if (high_en_alph[j] == str[i]) //Нахождение совпадений в алфавите
             {
-                if ((j - key) < 0)
+                if ((j - key) < 0) //Проверка на выход за границы массива
                 {
+                    //Сдвиг индекса в конец алфавита
                     output += high_en_alph[(j + 26) - key];
                 }
                 else
                 {
+                    //Сдвиг j-элемента на key позиций влево
                     output += high_en_alph[j - key];
                 }
             }
         }
 
+        //Посимвольное прохождение по английскому алфавиту в нижнем регистре
         for (int j = 0; j < low_en_alph.length(); ++j)
         {
             if (low_en_alph[j] == str[i])
@@ -173,6 +195,7 @@ QString decrypt(QString str, int key)
             }
         }
 
+        //Посимвольное прохождение по русскому алфавиту в верхнем регистре
         for (int j = 0; j < high_ru_alph.length(); ++j)
         {
             if (high_ru_alph[j] == str[i])
@@ -188,6 +211,7 @@ QString decrypt(QString str, int key)
             }
         }
 
+        //Посимвольное прохождение по русскому алфавиту в нижнем регистре
         for (int j = 0; j < low_ru_alph.length(); ++j)
         {
             if (low_ru_alph[j] == str[i])
@@ -203,6 +227,7 @@ QString decrypt(QString str, int key)
             }
         }
 
+        //Посимвольное прохождение по строчке со знаками
         for (int j = 0; j < signs.length(); ++j)
         {
             if (signs[j] == str[i])
@@ -218,6 +243,7 @@ QString decrypt(QString str, int key)
             }
         }
 
+        //Посимвольное прохождение по строчке с цифрами
         for (int j = 0; j < numbers.length(); ++j)
         {
             if (numbers[j] == str[i])
@@ -236,11 +262,13 @@ QString decrypt(QString str, int key)
     return output;
 }
 
+//Слот обработки клика по кнопке "Скопировать"
 void MainWindow::on_copy_clicked()
 {
     clipboard = QApplication::clipboard();
     clipboard->setText(ui->output->text());
 
+    //Если поле input пустое, то сообщение о копировании в StatusBar не выводится
     if (ui->input->text().isEmpty())
     {
         ui->statusBar->showMessage("");
@@ -251,28 +279,36 @@ void MainWindow::on_copy_clicked()
     }
 }
 
+//Слот обработки клика по RadioButton "Зашифровать"
 void MainWindow::on_encrypt_clicked()
 {
+    //Если поле input не пустое, там нет пробелов или табуляций
     if (!(ui->input->text().isEmpty() || ui->input->text() == " " || ui->input->text() == "\t"))
     {
+        //и если значения ключа не равно 0
         if (ui->keyValue->value() != 0)
         {
+            //вызывается функция шифрования
             ui->output->setText(encrypt(ui->input->text(), ui->keyValue->value()));
+            //и выводится сообщение в StatusBar
             ui->statusBar->showMessage("Текст успешно зашифрован");
         }
         else
         {
-            ui->output->setText(encrypt(ui->input->text(), ui->keyValue->value()));
-            ui->statusBar->showMessage("");
+            //Иначе в output присваивается не зашифрованный текст
+            ui->output->setText(ui->input->text());
+            ui->statusBar->showMessage(""); //и сообщение не выводится
         }
     }
     else
     {
+        //Иначе в output присваивается не зашифрованный текст
         ui->output->setText(ui->input->text());
-        ui->statusBar->showMessage("");
+        ui->statusBar->showMessage(""); //и сообщение не выводится
     }
 }
 
+//Слот обработки клика по RadioButton "Расшифровать"
 void MainWindow::on_decrypt_clicked()
 {
     if (!(ui->input->text().isEmpty() || ui->input->text() == " " || ui->input->text() == "\t"))
@@ -295,8 +331,10 @@ void MainWindow::on_decrypt_clicked()
     }
 }
 
+//Слот обработки изменения значения в SpinBox
 void MainWindow::on_keyValue_valueChanged(int arg1)
 {
+    //Проверка на состояние RadioButton "Зашифровать"
     if (ui->encrypt->isChecked())
     {
         if (!(ui->input->text().isEmpty() || ui->input->text() == " " || ui->input->text() == "\t"))
@@ -318,6 +356,7 @@ void MainWindow::on_keyValue_valueChanged(int arg1)
             ui->statusBar->showMessage("");
         }
     }
+    //Проверка на состояние RadioButton "Расшифровать"
     else if (ui->decrypt->isChecked())
     {
         if (!(ui->input->text().isEmpty() || ui->input->text() == " " || ui->input->text() == "\t"))
@@ -341,8 +380,10 @@ void MainWindow::on_keyValue_valueChanged(int arg1)
     }
 }
 
+//Слот обработки изменения текста в поле input
 void MainWindow::on_input_textChanged(const QString &arg1)
 {
+    //Проверка на состояние RadioButton "Зашифровать"
     if (ui->encrypt->isChecked())
     {
         if (!(ui->input->text().isEmpty() || ui->input->text() == " " || ui->input->text() == "\t"))
@@ -364,6 +405,7 @@ void MainWindow::on_input_textChanged(const QString &arg1)
             ui->statusBar->showMessage("");
         }
     }
+    //Проверка на состояние RadioButton "Расшифровать"
     else if (ui->decrypt->isChecked())
     {
         if (!(ui->input->text().isEmpty() || ui->input->text() == " " || ui->input->text() == "\t"))
@@ -387,9 +429,10 @@ void MainWindow::on_input_textChanged(const QString &arg1)
     }
 }
 
+//Слот обработки изменения состояния пункта "О программе" в меню "Справка
 void MainWindow::on_action_CaesarCode_triggered()
 {
-    aboutWnd = new About;
-    aboutWnd->setModal(true);
-    aboutWnd->exec();
+    aboutWnd = new About; //Выделение памяти под окно "О программе"
+    aboutWnd->setModal(true); //Установка в качестве модального окна
+    aboutWnd->exec(); //Запуск цикла обработки событий
 }

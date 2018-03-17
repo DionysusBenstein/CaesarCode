@@ -16,6 +16,7 @@ public:
     ~About();
 
 private slots:
+    //Слот обработки клика по кнопке "Закрыть"
     void on_closeButton_clicked();
 
 private:
