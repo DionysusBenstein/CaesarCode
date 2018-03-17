@@ -1,3 +1,17 @@
+/*******************************************************************/
+
+/* Original File Name: MainWindow.h                                */
+
+/* Date: 17-03-2018                                                */
+
+/* Developer: Dionysus Benstein                                    */
+
+/* Copyright: Dionysus Benstein LTD                                */
+
+/* Description: Главное окно с основным функционалом программы     */
+
+/*******************************************************************/
+
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 

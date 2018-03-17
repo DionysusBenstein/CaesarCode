@@ -1,3 +1,17 @@
+/*******************************************************************/
+
+/* Original File Name: About.h                                     */
+
+/* Date: 17-03-2018                                                */
+
+/* Developer: Dionysus Benstein                                    */
+
+/* Copyright: Dionysus Benstein LTD                                */
+
+/* Description: Окно с информацией о программе                     */
+
+/*******************************************************************/
+
 #ifndef ABOUT_H
 #define ABOUT_H
 

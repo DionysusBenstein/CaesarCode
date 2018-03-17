@@ -1,3 +1,17 @@
+/*******************************************************************/
+
+/* Original File Name: About.cpp                                   */
+
+/* Date: 17-03-2018                                                */
+
+/* Developer: Dionysus Benstein                                    */
+
+/* Copyright: Dionysus Benstein LTD                                */
+
+/* Description: Окно с информацией о программе                     */
+
+/*******************************************************************/
+
 #include "About.h"
 #include "ui_About.h"
 
