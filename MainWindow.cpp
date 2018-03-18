@@ -31,16 +31,8 @@ MainWindow::~MainWindow()
 }
 
 //Метод шифрования текста
-QString encrypt(QString str, int key)
+QString MainWindow::encrypt(QString str, int key)
 {
-    //Инициализация строк с алфавитом, знаками и цифрами
-    QString high_en_alph = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    QString low_en_alph = "abcdefghijklmnopqrstuvwxyz";
-    QString high_ru_alph = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ";
-    QString low_ru_alph = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
-    QString signs = "!\"#$%^&*()+=-_'?.,|/`~№:;@[]{}";
-    QString numbers = "0123456789";
-
     QString output;
 
     //Посимвольное прохождение по введённой строке
@@ -154,16 +146,8 @@ QString encrypt(QString str, int key)
 }
 
 //Метод дешифрования текста
-QString decrypt(QString str, int key)
+QString MainWindow::decrypt(QString str, int key)
 {
-    //Инициализация строк с алфавитом, знаками и цифрами
-    QString high_en_alph = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    QString low_en_alph = "abcdefghijklmnopqrstuvwxyz";
-    QString high_ru_alph = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ";
-    QString low_ru_alph = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
-    QString signs = "!\"#$%^&*()+=-_'?.,|/`~№:;@[]{}";
-    QString numbers = "0123456789";
-
     QString output;
 
     //Посимвольное прохождение по введённой строке
@@ -449,4 +433,75 @@ void MainWindow::on_action_CaesarCode_triggered()
     aboutWnd = new About; //Выделение памяти под окно "О программе"
     aboutWnd->setModal(true); //Установка в качестве модального окна
     aboutWnd->exec(); //Запуск цикла обработки событий
+}
+
+//Слот обработки изменения состояния пункта "Выход" в меню "Файл"
+void MainWindow::on_quit_triggered()
+{
+    this->close();
+}
+
+//Слот обработки изменения состояния пункта "Открыть..." в меню "Файл"
+void MainWindow::on_open_triggered()
+{
+    //Создаётся диалоговое окно для открытия файла
+    QString fileName = QFileDialog::getOpenFileName(this, "Открытие", "C:/", "Текстовые документы (*.txt)");
+
+    //Проверка на успешное создание диалогового окна для открытия файла
+    if (!fileName.isEmpty())
+    {
+        QFile file(fileName); //Открывется полученный файл
+
+        //----------------------------------------------------------------------------//
+        //Проверка на ошибки                                                          //
+        //Для возможности записи или чтения необходимо открыть файл с указанием флага //
+        //чтения QIODevice::ReadOnly или записи QIODevice::WriteOnly.                 //
+        if (!file.open(QIODevice::ReadOnly))                                          //
+        {                                                                             //
+            //Если возники ошибки, то вызывается сообщение об ошибке                  //
+            QMessageBox::critical(this, "Ошибка", "Невозможно открыть файл");         //
+        }                                                                             //
+        //----------------------------------------------------------------------------//
+
+        //Запись в поле input
+        QTextStream in(&file);
+        ui->input->setText(in.readAll());
+        file.close();
+    }
+}
+
+//Слот обработки изменения состояния пункта "Сохранить как..." в меню "Файл"
+void MainWindow::on_save_as_triggered()
+{
+    //Создаётся диалоговое окно для создания файла
+    QString fileName = QFileDialog::getSaveFileName(this, "Сохранение", "C:/", "Текстовые документы (*.txt)");
+
+    //Проверка на успешное создание диалогового окна для открытия файла
+    if(!fileName.isEmpty())
+    {
+        QFile file(fileName); //Открывется полученный файл
+
+        //Проверка на ошибки
+        if (!file.open(QIODevice::WriteOnly))
+        {
+            //Если возники ошибки, то вызывается сообщение об ошибке
+            QMessageBox::critical(this, "Ошибка", "Невозможно открыть файл");
+        }
+
+        //Запись в файл
+        QTextStream out(&file);
+        out << ui->output->text();
+
+        //----------------------------------------------------------------------------//
+        //Данные сразу не записываются в файл на накопителе, они записываются         //
+        //в буфер в оперативной памяти. После закрытия файла данные из буфера         //
+        //записываются в файл на носителе. Это сделано для того, чтобы не нагружать   //
+        //жесткий диск или любой другой тип накопителя, на котором находится файл.    //
+        //Информацию из буфера в файл можно записать принудительно без закрытия файла,//
+        //вызвав метод QFile::flush()                                                 //
+        file.flush();                                                                 //
+        //----------------------------------------------------------------------------//
+
+        file.close();
+    }
 }

@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Caesar Cipher v1.3</string>
+   <string>Caesar Cipher v1.4</string>
   </property>
   <property name="windowIcon">
    <iconset resource="resources.qrc">
@@ -120,6 +120,16 @@
     </property>
     <addaction name="action_CaesarCode"/>
    </widget>
+   <widget class="QMenu" name="menu_2">
+    <property name="title">
+     <string>Файл</string>
+    </property>
+    <addaction name="open"/>
+    <addaction name="save_as"/>
+    <addaction name="separator"/>
+    <addaction name="quit"/>
+   </widget>
+   <addaction name="menu_2"/>
    <addaction name="menu"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
@@ -130,6 +140,30 @@
    </property>
    <property name="text">
     <string>О программе CaesarCode</string>
+   </property>
+  </action>
+  <action name="open">
+   <property name="text">
+    <string>Открыть...</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
+  </action>
+  <action name="save_as">
+   <property name="text">
+    <string>Сохранить как...</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+  </action>
+  <action name="quit">
+   <property name="text">
+    <string>Выход</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
    </property>
   </action>
  </widget>
