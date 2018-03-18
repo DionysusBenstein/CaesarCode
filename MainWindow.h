@@ -15,7 +15,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#define QT_NO_DEBUG //Объявлен, чтобы отключить проверку Q_ASSERT(cond)
+#define QT_NO_DEBUG //Объявлено, чтобы отключить проверку Q_ASSERT(cond)
 
 #include <QMainWindow>
 #include <QClipboard>
