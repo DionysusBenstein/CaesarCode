@@ -1,5 +1,5 @@
 # CaesarCode
-The program encrypts the text with the algorithm of Caesar
+The program encrypts the text with the algorithm of Caesar.
 
 ![Screenshot](https://github.com/DionysusBenstein/CaesarCode/raw/master/Screenshot.png)
 
