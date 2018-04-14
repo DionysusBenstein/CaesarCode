@@ -6,7 +6,7 @@
 
 /* Developer: Dionysus Benstein                                    */
 
-/* Copyright: Dionysus Benstein LTD                                */
+/* Copyright © 2018 Dionysus Benstein. All rights reserved.        */
 
 /* Description: Окно с информацией о программе                     */
 
