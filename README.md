@@ -5,7 +5,7 @@ The program encrypts the text with the algorithm of Caesar.
 
 <a href="https://drive.google.com/open?id=1W4Zundqb33hghFTY7seMeJUumxYDUeyJ">Download for Windows</a>
 
-```cpp
+```c++
 //C++ code
 cout << "Hello, World!" << endl;
 ```
