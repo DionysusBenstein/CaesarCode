@@ -75,14 +75,14 @@
   <widget class="QLabel" name="linkLabel">
    <property name="geometry">
     <rect>
-     <x>223</x>
+     <x>208</x>
      <y>119</y>
-     <width>206</width>
-     <height>16</height>
+     <width>241</width>
+     <height>20</height>
     </rect>
    </property>
    <property name="text">
-    <string>&lt;a href=&quot;https://github.com/EasyMaan/CaesarCode&quot;&gt;https://github.com/EasyMaan/CaesarCode&lt;/a&gt;</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href =&quot;https://github.com/DionysusBenstein/CaesarCode&quot;&gt;https://github.com/DionysusBenstein/CaesarCode&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <widget class="Line" name="line">
