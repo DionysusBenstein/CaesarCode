@@ -32,7 +32,7 @@ MainWindow::~MainWindow()
 }
 
 //Метод шифрования текста
-QString MainWindow::encrypt(QString str, int key)
+QString MainWindow::encrypt(const QString str, const int key) const
 {
     QString output;
 
@@ -147,7 +147,7 @@ QString MainWindow::encrypt(QString str, int key)
 }
 
 //Метод дешифрования текста
-QString MainWindow::decrypt(QString str, int key)
+QString MainWindow::decrypt(const QString str, const int key) const
 {
     QString output;
 

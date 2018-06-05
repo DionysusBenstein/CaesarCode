@@ -37,4 +37,4 @@ private:
     Ui::About *ui;
 };
 
-#endif // ABOUT_H
+#endif //ABOUT_H

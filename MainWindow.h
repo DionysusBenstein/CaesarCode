@@ -22,6 +22,7 @@
 #include <QFileDialog>
 #include <QMessageBox>
 #include <QTextStream>
+
 #include "About.h"
 
 namespace Ui {
@@ -37,10 +38,10 @@ public:
     ~MainWindow();
 
     //Метод шифрования текста
-    QString encrypt(QString str, int key);
+    QString encrypt(const QString str, const int key) const;
 
     //Метод дешифрования текста
-    QString decrypt(QString str, int key);
+    QString decrypt(const QString str, const int key) const;
 
 private slots:
     //Слот обработки клика по кнопке "Скопировать"
@@ -84,4 +85,4 @@ private:
     QString numbers = "0123456789";
 };
 
-#endif // MAINWINDOW_H
+#endif //MAINWINDOW_H
