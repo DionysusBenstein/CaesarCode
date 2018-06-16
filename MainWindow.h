@@ -73,8 +73,8 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    QClipboard *clipboard; //Объявление объекта управления буфером обмена
-    About *aboutWnd; //Объявления окна "О программе"
+    QClipboard *clipboard;
+    About *aboutWnd;
 
     //Объявление строк с алфавитом, знаками и цифрами
     QString high_en_alph;
