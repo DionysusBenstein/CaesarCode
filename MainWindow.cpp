@@ -23,7 +23,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     ui->keyValue->setMaximum(32);
     ui->encrypt->setChecked(true);
     ui->output->setReadOnly(true);
-    MainWindow::setWindowTitle("CaesarCode v1.5.9");
+    MainWindow::setWindowTitle("CaesarCode v1.5.10");
 
     high_en_alph  =  "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     low_en_alph   =  "abcdefghijklmnopqrstuvwxyz";
