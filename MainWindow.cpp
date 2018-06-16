@@ -24,6 +24,13 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     ui->encrypt->setChecked(true);
     ui->output->setReadOnly(true);
     MainWindow::setWindowTitle("CaesarCode v1.5.9");
+
+    high_en_alph  =  "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    low_en_alph   =  "abcdefghijklmnopqrstuvwxyz";
+    high_ru_alph  =  "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ";
+    low_ru_alph   =  "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
+    signs         =  "!\"#$%^&*()+=-_'?.,|/`~№:;@[]{}";
+    numbers       =  "0123456789";
 }
 
 MainWindow::~MainWindow()
@@ -38,7 +45,6 @@ QString MainWindow::encrypt(const QString str, const int key) const
 
     for (int i = 0; i < str.length(); ++i)
     {
-        //Если в введённой строке встречается пробел, то он остаётся неизменённым
         if(str[i] == ' ')
         {
             output += ' ';
