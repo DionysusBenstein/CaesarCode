@@ -34,7 +34,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = 0);
+    explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
     //Метод шифрования текста
@@ -54,10 +54,10 @@ private slots:
     void on_decrypt_clicked();
 
     //Слот обработки изменения значения в SpinBox
-    void on_keyValue_valueChanged(int arg1);
+    void on_keyValue_valueChanged();
 
     //Слот обработки изменения текста в поле input
-    void on_input_textChanged(const QString &arg1);
+    void on_input_textChanged();
 
     //Слот обработки изменения состояния пункта "О программе" в меню "Справка
     void on_action_CaesarCode_triggered();

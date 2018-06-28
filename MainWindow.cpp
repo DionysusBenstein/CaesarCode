@@ -23,7 +23,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     ui->keyValue->setMaximum(32);
     ui->encrypt->setChecked(true);
     ui->output->setReadOnly(true);
-    MainWindow::setWindowTitle("CaesarCode v1.5.10");
+    MainWindow::setWindowTitle("CaesarCode v1.5.11");
 
     high_en_alph  =  "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     low_en_alph   =  "abcdefghijklmnopqrstuvwxyz";
@@ -311,7 +311,7 @@ void MainWindow::on_decrypt_clicked()
 }
 
 //Слот обработки изменения значения в SpinBox
-void MainWindow::on_keyValue_valueChanged(int arg1)
+void MainWindow::on_keyValue_valueChanged(/*int arg1*/)
 {
     if (ui->encrypt->isChecked())
     {
@@ -358,7 +358,7 @@ void MainWindow::on_keyValue_valueChanged(int arg1)
 }
 
 //Слот обработки изменения текста в поле input
-void MainWindow::on_input_textChanged(const QString &arg1)
+void MainWindow::on_input_textChanged(/*const QString &arg1*/)
 {
     if (ui->encrypt->isChecked())
     {
